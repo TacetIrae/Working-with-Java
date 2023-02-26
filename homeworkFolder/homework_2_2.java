@@ -1,21 +1,21 @@
 package homeworkFolder;
-import java.util.logging.LogManager;
-import java.io.FileInputStream;
-import java.util.logging.Logger;
-import java.lang.System.Logger.Level;
+
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
 
 public class homework_2_2 {
-    static Logger LOGGER;
-    static {
-        try(FileInputStream ins = new FileInputStream("C:\\Users\\Admin\\Desktop\\Working with java\\Java_GB\\log.config")){
-            LogManager.getLogManager().readConfiguration(ins);
-            LOGGER = Logger.getLogger(homework_2_2.class.getName());
-        }catch (Exception ignore){
-            ignore.printStackTrace();
-        }
-    }
-    public static void main(String[] args) {
+   
+    public static void main(String[] args) throws SecurityException, IOException {
+        Logger logger = Logger.getLogger(homework_2_2.class.getName());
+        FileHandler fh = new FileHandler("logging.txt");
+        logger.addHandler(fh);
+        SimpleFormatter sFor = new SimpleFormatter();
+        fh.setFormatter(sFor);
         int[] arr = {10,1,20,123,5,2,7,22,57};
 
         boolean isSorted = false;
@@ -29,16 +29,16 @@ public class homework_2_2 {
                     buffer = arr[i];
                     arr[i] = arr[i+1];
                     arr[i+1] = buffer;
-                    String msg;
-                    for (int j = 0; i<arr.length;j++){
-                        msg = msg+ " " + arr[i] ;
-                    }
-                    LOGGER.log(Level.INFO, " "+ msg);
+                    logger.log(java.util.logging.Level.INFO, "Изменение произведено" + Arrays.toString(arr));
+                }
+                else{
+
                 }
             }
             
         }
         System.out.println(Arrays.toString(arr));
+        fh.close();
     }
 
 

@@ -12,11 +12,9 @@ import first_pj.main;
 
 public class N_2_api {
     public static void main(String[] args) throws SecurityException, IOException {
-        Logger logger = Logger.getLogger(N_2_api.class.getName());
-        FileHandler fh = new FileHandler("log.txt");
-        logger.addHandler(fh);
-        SimpleFormatter sFormat = new SimpleFormatter();
-        fh.setFormatter(sFormat);
+      Logger logger = Logger.getLogger(N_2_api.class.getName());
+      FileHandler fh = new FileHandler("log.txt");
+
         /*API- Application programming interface 
          *  Возможности языка платформы java для удоюного взаимодействия с языком
          */
@@ -26,7 +24,7 @@ public class N_2_api {
             Долгое время выполнения программы
         }*/
         StringBuilder sb = new StringBuilder();
-        for (int i = 0;i<1000000;i++){
+        for (int i = 0;i<100;i++){
             sb.append("+");
             /*Ускорение в несколько тысяч раз 
              * API- StringBuilder:
@@ -107,9 +105,12 @@ public class N_2_api {
 
                 //ch.setFormatter(sFormat);
 
-
+                logger.addHandler(fh);
+                SimpleFormatter sFormat = new SimpleFormatter();
+                fh.setFormatter(sFormat);
                 logger.log(Level.WARNING, "test logging 1");
                 logger.info("Test logging 2");
+                fh.close();
 
 
         

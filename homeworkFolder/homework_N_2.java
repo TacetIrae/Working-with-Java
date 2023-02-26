@@ -2,10 +2,15 @@ package homeworkFolder;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
 import org.json.simple.JSONObject;
 
 
 public class homework_N_2 {
+
     public static void main(String[] args) {
         Map<String, String> par = new HashMap<String,String>();
         par.put("name","Egor");
@@ -26,6 +31,7 @@ public class homework_N_2 {
         }
         s.delete(s.toString().length()-5,s.toString().length());
         return s.toString();
+
 
     }
 
